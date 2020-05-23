@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+Please upload report file as XLS or XLSX. The file name should correspond to the following pattern:
+<pre>CYCLE-DEPLOYMENT-DATE-TIME.xls[x]</pre>
+<form action="" method="post" enctype="multipart/form-data" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.file.label }}<br>
+        {{ form.file() }}
+    </p>
+    <p>
+        {{ form.new_deployment() }}{{ form.new_deployment.label }}<br>
+        {{ form.new_cycle() }}{{ form.new_cycle.label }}
+    </p>
+    <p>
+        {{ form.submit() }}
+    </p>
+</form>
+    <hr/>
+    Where:
+<dl>
+    <dt>CYCLE</dt><dd>is a cycle title; e.g.: May</dd>
+    <dt>DEPLOYMENT</dt><dd>is a deployment title; e.g.: Win10_CU</dd>
+    <dt>DATE</dt><dd>is a date in YYMMDD format; e.g.: 200521 for 21<sup>st</sup> of May 2020</dd>
+    <dt>TIME</dt><dd>is a time in hhmmTZN format; e.g.: 0300KZN for 3:00 AM Kazan time</dd>
+</dl>
+Example of a correct file name: <pre>May-Win10_CU-200521-0300KZN.xlsx</pre>
+{% endblock %}

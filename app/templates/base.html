@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>Patching report</title>
+    </head>
+    <body>
+    <div navigation>
+        <a href="/">Home</a> | <a href="/upload_report">Upload report</a>
+    </div>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+    </body>
+</html>

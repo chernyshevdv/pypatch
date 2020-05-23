@@ -1,0 +1,36 @@
+    {% extends "base.html" %}
+    {% block content %}
+    <h1>Hello world</h1>
+    <hr>
+    <table valign="top">
+        <tr valign="top">
+            <td>
+                <h2>Deployments:</h2>
+                <ul>
+                    {% for dep in deployments %}
+                        <li><a href="/deployment/{{ dep.id }}">{{ dep.title }}</a></li>
+                        <h3>cycles:</h3>
+                        <ul>
+                        {% for cycle in dep.cycles %}
+                            <li>{{ cycle.title }}</li>
+                            <h4>reports:</h4>
+                            <ul>
+                            {% for report in cycle.reports %}
+                                <li>{{ report.updated }}</li>
+                            {% endfor %}
+                            </ul>
+                            <h4>collections:</h4>
+                            <ul>
+                            {%  for coll in cycle.collections %}
+                                <li><a href="/collection/{{ coll.id }}">{{ coll.title }}(ring {{ coll.ring }})</a></li>
+                            {%  endfor %}
+                            </ul>
+
+                        {% endfor %}
+                        </ul>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+    </table>
+    {% endblock %}
